@@ -1,18 +1,87 @@
+/* page.module.css */
+
 .container {
-  padding: 50px;
-  text-align: center;
+  width: 400px;
+  height: auto;
+  padding: 24px;
+  background: rgb(48, 48, 48);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(192, 192, 192, 0.15);
+  overflow: hidden;
+  position: relative;
 }
 
 .tabs {
-  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+
 }
 
-.button {
-  margin: 0 10px;
-  padding: 10px 20px;
+.tabs button {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #999999;
+  z-index: 1;
+  transition: color 0.3s ease;
+  position: relative;
+  
 }
 
-.active {
-  background: #222;
-  color: white;
+.tabs button.active {
+  color: #fff;
+}
+
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 16px;
+  transition: transform 0.4s ease, background 0.4s ease;
+  z-index: 0;
+}
+
+.loginGradient {
+  background: linear-gradient(135deg, #6f00ff, #af71ff);
+}
+
+.registerGradient {
+  background: linear-gradient(135deg, #af71ff, #6f00ff);
+}
+
+.slider.right {
+  transform: translateX(100%);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.form {
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -10,6 +10,13 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.tabs}>
+        {/* Динамичный ползунок с изменением градиента */}
+        <div
+          className={`${styles.slider} ${
+            activeTab === 'login' ? styles.loginGradient : styles.registerGradient
+          } ${activeTab === 'register' ? styles.right : ''}`}
+        />
+
         <button
           className={activeTab === 'login' ? styles.active : ''}
           onClick={() => setActiveTab('login')}

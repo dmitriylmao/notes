@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
+    "clsx": "^2.1.1",
     "firebase": "^11.8.1",
     "next": "15.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
