@@ -7,7 +7,6 @@ export default function NoteModal({ mode = 'create', note, onSave, onDelete, onC
   const [text, setText] = useState(note?.text || '')
   const [isSaving, setIsSaving] = useState(false)
 
-  // Обновляем поля при смене note (например при редактировании другой заметки)
   useEffect(() => {
     setTitle(note?.title || '')
     setText(note?.text || '')
@@ -18,7 +17,7 @@ export default function NoteModal({ mode = 'create', note, onSave, onDelete, onC
     if (!title.trim() || !text.trim()) return
     setIsSaving(true)
     try {
-      await onSave({ title, text })  // ждем сохранения
+      await onSave({ title, text })
       onClose()
     } finally {
       setIsSaving(false)
@@ -49,7 +48,7 @@ export default function NoteModal({ mode = 'create', note, onSave, onDelete, onC
             placeholder="Текст заметки"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className={styles.textAreaField}
+            className={styles.textAreaField} // Используем класс для textarea
             disabled={isSaving}
           />
           <div className={styles.actions}>
@@ -60,7 +59,7 @@ export default function NoteModal({ mode = 'create', note, onSave, onDelete, onC
               <button
                 type="button"
                 onClick={handleDelete}
-                className={`${styles.button} ${styles.delete}`}
+                className={`${styles.button} ${styles.delete}`} /* Добавили класс .delete */
                 disabled={isSaving}
               >
                 Удалить

@@ -6,3 +6,4 @@ export default function FloatingButton({ onClick }) {
     <button className={styles.fab} onClick={onClick}>+</button>
   )
 }
+
