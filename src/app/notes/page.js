@@ -19,7 +19,6 @@ export default function NotesPage() {
   const [userId, setUserId] = useState(null)
 
   useEffect(() => {
-    // Ждем авторизацию пользователя и загружаем заметки
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUserId(user.uid)
@@ -50,7 +49,6 @@ export default function NotesPage() {
     if (!userId) return alert('Пользователь не авторизован')
 
     if (modalMode === 'create') {
-      // Добавляем созданную заметку в БД
       const newNote = {
         userId,
         title: noteData.title,

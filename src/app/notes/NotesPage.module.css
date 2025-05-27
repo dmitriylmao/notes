@@ -1,6 +1,7 @@
 .container {
   padding: 20px;
   position: relative;
+  background-color: aqua;
 }
 
 .notesGrid {
@@ -8,4 +9,5 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   max-width: 100%;
   gap: 20px;
+  background-color: brown;
 }

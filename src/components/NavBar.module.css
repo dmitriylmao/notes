@@ -1,26 +1,135 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background: #222;
-  color: white;
-  position: sticky;
-  top: 0;
+  padding: 15px 30px;
+  
+  background: rgba(27, 27, 27, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  color: #cccccc;
+  
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  
   z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.219);
+}
+
+.leftSection,
+.rightSection,
+.centerSection {
+  display: flex;
+  align-items: center;
+  flex: 1; 
+}
+
+.leftSection {
+  justify-content: flex-start; 
+}
+
+.centerSection {
+  justify-content: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #cccccc;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.rightSection {
+  justify-content: flex-end; 
+}
+
+.navbar div:not(.leftSection, .rightSection, .centerSection) {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+.navbar b {
+  color: #cccccc;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .logoutBtn {
-  background: #e63946;
-  border: none;
-  color: white;
-  padding: 6px 12px;
+  background-color: transparent;
+  color: #cccccc;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background 0.3s;
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  
+  position: relative; 
+  overflow: hidden; 
+  z-index: 1; 
+  
+  transition: 
+    background-color 0.4s ease-out,
+    color 0.4s ease-out,
+    border-color 0.4s ease-out,
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.4s ease-out; 
+  
+  box-shadow: none;
 }
 
+
 .logoutBtn:hover {
-  background: #c5303f;
+  background-color: #6f00ff;
+  color: #cccccc;
+  border-color: #6f00ff;
+  transform: scale(1.03); 
+  
+  box-shadow: 
+    0 0 15px rgba(111, 0, 255, 0.7), 
+    0 0 30px rgba(111, 0, 255, 0.5),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  animation: pulse-glow 1.8s infinite alternate; 
+}
+
+.logoutBtn:active {
+  background-color: #8c2bff;
+  transform: translateY(-2px) scale(0.98); 
+  box-shadow: 
+    0 0 5px rgba(111, 0, 255, 0.5),
+    0 0 10px rgba(111, 0, 255, 0.3),
+    0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-out;
+  animation: none;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 
+      0 0 15px rgba(111, 0, 255, 0.7), 
+      0 0 30px rgba(111, 0, 255, 0.5),
+      0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 
+      0 0 25px rgba(111, 0, 255, 0.9), 
+      0 0 45px rgba(111, 0, 255, 0.7), 
+      0 15px 35px rgba(0, 0, 0, 0.7); 
+  }
+  100% {
+    box-shadow: 
+      0 0 15px rgba(111, 0, 255, 0.7), 
+      0 0 30px rgba(111, 0, 255, 0.5),
+      0 10px 25px rgba(0, 0, 0, 0.5);
+  }
 }

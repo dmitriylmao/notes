@@ -1,6 +1,10 @@
 
 body {
   font-family: var(--font-raleway), sans-serif;
+  font-variant-numeric: lining-nums; /* Современный способ */
+  -moz-font-feature-settings: "lnum"; /* Для Firefox */
+  -webkit-font-feature-settings: "lnum"; /* Для Webkit */
+  font-feature-settings: "lnum";
   background-color: rgb(20, 20, 20);
   display: flex; /* Делаем body flex-контейнером */
   justify-content: center; /* Центрирует дочерние элементы по горизонтали */
