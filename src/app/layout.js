@@ -8,7 +8,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // ВАЖНО: НЕТ ТЕГА <head> ЗДЕСЬ!
     <html lang="ru" className={`${raleway.className} ${raleway.variable}`}>
       <body>
         {children}
