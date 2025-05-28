@@ -1,18 +1,22 @@
-
 body {
   font-family: var(--font-raleway), sans-serif;
-  font-variant-numeric: lining-nums; /* Современный способ */
-  -moz-font-feature-settings: "lnum"; /* Для Firefox */
-  -webkit-font-feature-settings: "lnum"; /* Для Webkit */
+  font-variant-numeric: lining-nums;
+  -moz-font-feature-settings: "lnum";
+  -webkit-font-feature-settings: "lnum";
   font-feature-settings: "lnum";
   background-color: rgb(20, 20, 20);
-  display: flex; /* Делаем body flex-контейнером */
-  justify-content: center; /* Центрирует дочерние элементы по горизонтали */
-  align-items: center; /* Центрирует дочерние элементы по вертикали */
-  min-height: 100vh; /* Убеждаемся, что body занимает всю высоту viewport'а */
+  
+  display: flex;
+  flex-direction: column; 
+  
+  min-height: 100vh; 
+  
+  
+  padding-top: 20px; 
 }
+
 html, body {
-  height: 100%; /* Очень важно! body должен занимать всю высоту окна */
+  height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0; 
 }

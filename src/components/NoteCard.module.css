@@ -1,14 +1,107 @@
+/* components/NoteCard.module.css */
+
 .card {
-  width: 200px;
-  height: 150px;
-  background: #f3f3f3;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 10px;
+  /* Основные стили карточки */
+  background: linear-gradient(135deg, rgba(34, 34, 34, 0.7), rgba(26, 26, 26, 0.7)); /* Мягкий, полупрозрачный градиент */
+  backdrop-filter: blur(15px); /* Эффект матового стекла */
+  -webkit-backdrop-filter: blur(15px); /* Для Safari */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая, едва заметная обводка */
+  border-radius: 20px; /* Красиво скругленные углы */
+  padding: 25px; /* Увеличенные отступы */
   cursor: pointer;
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05); /* Глубокая тень и легкий внутренний свет */
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Более плавные и выразительные переходы */
+  position: relative;
+  overflow: hidden; /* Важно для эффекта "сияния" */
+  display: flex;
+  justify-content: center; /* Центрируем заголовок */
+  align-items: center; /* Центрируем заголовок по вертикали */
+  min-height: 180px; /* Увеличим минимальную высоту для большего пространства */
+  text-align: center; /* Центрируем текст */
+  transform-style: preserve-3d; /* Для 3D-эффектов, если захотим большего */
 }
 
+/* Эффект при наведении */
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-12px) scale(1.04); /* Еще более выраженное поднятие и увеличение */
+  border-color: #6f00ff; /* Акцентный фиолетовый цвет обводки */
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.7), /* Более глубокая тень */
+    0 0 30px rgba(111, 0, 255, 0.7), /* Яркое фиолетовое свечение */
+    inset 0 0 15px rgba(255, 255, 255, 0.1); /* Усиленный внутренний свет */
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(30, 30, 30, 0.8)); /* Чуть более насыщенный градиент */
+}
+
+/* Заголовок внутри карточки */
+.card h3 {
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 700; /* Жирный шрифт для акцента */
+  font-size: 1.8rem; /* Крупный, заметный размер */
+  color: #ffffff; /* Чисто белый цвет текста */
+  margin: 0; /* Убираем стандартные отступы */
+  text-shadow: 0 0 10px rgba(111, 0, 255, 0.3); /* Легкая тень для текста */
+  transition: color 0.3s ease-out, text-shadow 0.3s ease-out; /* Плавный переход для цвета текста и тени */
+  white-space: nowrap; /* Запрещаем перенос строки */
+  overflow: hidden; /* Обрезаем, если слишком длинный */
+  text-overflow: ellipsis; /* Добавляем троеточие */
+  max-width: 100%; /* Гарантируем, что троеточие будет работать */
+}
+
+/* Изменение заголовка при наведении */
+.card:hover h3 {
+  color: #6f00ff; /* Цвет заголовка меняется на фиолетовый */
+  text-shadow: 0 0 15px rgba(111, 0, 255, 0.8); /* Более яркая тень для текста */
+}
+
+/* Эффект "сияния" при наведении (имитация блика) */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%); /* Светлый радиальный градиент */
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+  pointer-events: none; /* Чтобы не мешал кликам */
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translate(20px, 20px); /* Смещение блика при наведении */
+}
+
+/* Адаптивность для сетки (если ты используешь grid в NotesPage.module.css) */
+@media (max-width: 1024px) {
+  .card {
+    padding: 20px;
+    min-height: 160px;
+  }
+  .card h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 18px;
+    min-height: 140px;
+    border-radius: 16px;
+  }
+  .card h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+    min-height: 120px;
+    border-radius: 12px;
+  }
+  .card h3 {
+    font-size: 1.2rem;
+  }
 }
