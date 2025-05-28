@@ -1,53 +1,42 @@
 /* NotesPage.module.css */
 
 .container {
-  padding: 10% 20px; /* Отступы сверху/снизу и по бокам */
-  max-width: 1200px; /* Максимальная ширина контента */
-  margin: 0 auto; /* Центрируем контейнер по горизонтали */
-  /* Убери или закомментируй любые свойства, которые могли бы центрировать его по вертикали,
-     например, height: 100vh; display: flex; align-items: center; */
-  
-  /* Если до этого NotesPage.js или global.css имел стили, которые центрировали контент,
-     например, min-height: 100vh; display: flex; justify-content: center; align-items: center;
-     для самого <body> или <html>, то их тоже нужно будет удалить или изменить.
-     Но обычно это делается на уровне контейнера.
-  */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 120Px auto;
 }
 
 .notesGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
-  gap: 25px; /* Промежутки между карточками */
-  padding: 20px 0; /* Отступы вокруг сетки */
-  
-  justify-content: start; /* Карточки начинаются слева */
-  align-items: start; /* Выравниваем карточки по верхнему краю */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-content: start;
+  align-items: start;
 }
 
-/* Медиа-запросы для адаптивности сетки */
 @media (max-width: 1200px) {
   .notesGrid {
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 }
 
 @media (max-width: 900px) {
   .notesGrid {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
   .container {
-    padding: 12% 15px;
+    padding: 15px;
   }
 }
 
 @media (max-width: 600px) {
   .notesGrid {
-    grid-template-columns: 1fr; /* Одна колонка */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
   .container {
-    padding: 30% 15px;
+    padding: 15px;
   }
 }

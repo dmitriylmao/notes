@@ -2,13 +2,13 @@
 import { useState } from 'react'
 import LoginForm from '@/components/LoginForm'
 import RegisterForm from '@/components/RegisterForm'
-import styles from './page.module.css' // Убедись, что стили импортированы
+import styles from './page.module.css' 
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState('login')
 
   return (
-    <div className={styles.pageWrapper}> {/* ВОТ ОН, НОВЫЙ ВНЕШНИЙ КОНТЕЙНЕР */}
+    <div className={styles.pageWrapper}> 
       <div className={styles.container}>
         <div className={styles.tabs}>
           <div

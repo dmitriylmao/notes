@@ -1,86 +1,166 @@
 /* components/NoteCard.module.css */
 
 .card {
-  /* Основные стили карточки */
-  background: linear-gradient(135deg, rgba(34, 34, 34, 0.7), rgba(26, 26, 26, 0.7)); /* Мягкий, полупрозрачный градиент */
-  backdrop-filter: blur(15px); /* Эффект матового стекла */
-  -webkit-backdrop-filter: blur(15px); /* Для Safari */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая, едва заметная обводка */
-  border-radius: 20px; /* Красиво скругленные углы */
-  padding: 25px; /* Увеличенные отступы */
+  background: linear-gradient(135deg, rgba(27, 27, 27, 0.7), rgba(26, 26, 26, 0.7));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.219);
+  border-radius: 20px;
+  padding: 25px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05); /* Глубокая тень и легкий внутренний свет */
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Более плавные и выразительные переходы */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  overflow: hidden; /* Важно для эффекта "сияния" */
+  overflow: hidden;
   display: flex;
-  justify-content: center; /* Центрируем заголовок */
-  align-items: center; /* Центрируем заголовок по вертикали */
-  min-height: 180px; /* Увеличим минимальную высоту для большего пространства */
-  text-align: center; /* Центрируем текст */
-  transform-style: preserve-3d; /* Для 3D-эффектов, если захотим большего */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 140px;
+  text-align: center;
+  transform-style: preserve-3d;
 }
 
-/* Эффект при наведении */
 .card:hover {
-  transform: translateY(-12px) scale(1.04); /* Еще более выраженное поднятие и увеличение */
-  border-color: #6f00ff; /* Акцентный фиолетовый цвет обводки */
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.7), /* Более глубокая тень */
-    0 0 30px rgba(111, 0, 255, 0.7), /* Яркое фиолетовое свечение */
-    inset 0 0 15px rgba(255, 255, 255, 0.1); /* Усиленный внутренний свет */
-  background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(30, 30, 30, 0.8)); /* Чуть более насыщенный градиент */
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.582), rgba(30, 30, 30, 0.699));
 }
 
-/* Заголовок внутри карточки */
-.card h3 {
+.cardInnerContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.cardTitle {
   font-family: var(--font-raleway), sans-serif;
-  font-weight: 700; /* Жирный шрифт для акцента */
-  font-size: 1.8rem; /* Крупный, заметный размер */
-  color: #ffffff; /* Чисто белый цвет текста */
-  margin: 0; /* Убираем стандартные отступы */
-  text-shadow: 0 0 10px rgba(111, 0, 255, 0.3); /* Легкая тень для текста */
-  transition: color 0.3s ease-out, text-shadow 0.3s ease-out; /* Плавный переход для цвета текста и тени */
-  white-space: nowrap; /* Запрещаем перенос строки */
-  overflow: hidden; /* Обрезаем, если слишком длинный */
-  text-overflow: ellipsis; /* Добавляем троеточие */
-  max-width: 100%; /* Гарантируем, что троеточие будет работать */
+  font-weight: 400;
+  font-size: 20px;
+  color: #cccccc;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(111, 0, 255, 0.3);
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-width: calc(100% - 50px);
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(20px);
+  opacity: 1;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  z-index: 2;
+  pointer-events: auto;
 }
 
-/* Изменение заголовка при наведении */
-.card:hover h3 {
-  color: #6f00ff; /* Цвет заголовка меняется на фиолетовый */
-  text-shadow: 0 0 15px rgba(111, 0, 255, 0.8); /* Более яркая тень для текста */
+.card:hover .cardTitle {
+  opacity: 0;
+  transform: translate(-50%, -150%) scale(0.9) translateZ(0);
+  pointer-events: none;
 }
 
-/* Эффект "сияния" при наведении (имитация блика) */
+.cardText {
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #cccccc;
+  line-height: 1.3;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(100%) translateZ(20px);
+  transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card:hover .cardText {
+  opacity: 1;
+  transform: translateY(0) translateZ(20px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  pointer-events: auto;
+}
+
 .card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%); /* Светлый радиальный градиент */
-  transform: rotate(45deg);
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 25px;
+  pointer-events: none;
+  z-index: -1;
   opacity: 0;
-  transition: all 0.5s ease-out;
-  pointer-events: none; /* Чтобы не мешал кликам */
+  transition:
+    opacity 0.4s ease-out,
+    background-position 0.1s linear,
+    transform 0.4s ease-out;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(53, 3, 192, 0.8) 0%,
+    rgba(111, 0, 255, 0.4) 30%,
+    transparent 80%
+  );
+  background-size: 300% 300%;
+  background-position: var(--mouse-x) var(--mouse-y);
+  filter: blur(40px);
+  transform:
+    perspective(1000px)
+    rotateX(var(--parallax-y, 0deg))
+    rotateY(var(--parallax-x, 0deg))
+    translateZ(-1px);
 }
 
 .card:hover::before {
   opacity: 1;
-  transform: rotate(45deg) translate(20px, 20px); /* Смещение блика при наведении */
+  filter: blur(50px);
 }
 
-/* Адаптивность для сетки (если ты используешь grid в NotesPage.module.css) */
 @media (max-width: 1024px) {
   .card {
     padding: 20px;
     min-height: 160px;
   }
-  .card h3 {
+  .cardTitle {
     font-size: 1.6rem;
+    -webkit-line-clamp: 2;
+  }
+  .cardText {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 5;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  .card::before {
+    filter: blur(30px);
+  }
+  .card:hover::before {
+    filter: blur(40px);
   }
 }
 
@@ -90,8 +170,23 @@
     min-height: 140px;
     border-radius: 16px;
   }
-  .card h3 {
+  .cardTitle {
     font-size: 1.4rem;
+    -webkit-line-clamp: 2;
+  }
+  .cardText {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 4;
+    top: 18px;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+  }
+  .card::before {
+    filter: blur(25px);
+  }
+  .card:hover::before {
+    filter: blur(35px);
   }
 }
 
@@ -101,7 +196,22 @@
     min-height: 120px;
     border-radius: 12px;
   }
-  .card h3 {
+  .cardTitle {
     font-size: 1.2rem;
+    -webkit-line-clamp: 2;
+  }
+  .cardText {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+  }
+  .card::before {
+    filter: blur(20px);
+  }
+  .card:hover::before {
+    filter: blur(30px);
   }
 }

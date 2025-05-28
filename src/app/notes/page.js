@@ -90,6 +90,7 @@ export default function NotesPage() {
             <NoteCard
               key={note.id}
               title={note.title}
+              text={note.text}
               onClick={() => openEditModal(note, index)}
             />
           ))}
