@@ -9,20 +9,22 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(8px); /* Увеличил размытие для более явного эффекта матового стекла */
-  -webkit-backdrop-filter: blur(8px); /* Для поддержки Safari */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 20px;
-  
 }
 
 .modal {
-  background: rgba(34, 34, 34, 0.8); /* Слегка уменьшил прозрачность, чтобы фон был чуть темнее */
-  border-radius: 15px;
-  padding: 30px;
-  width: 90%;
-  max-width: 600px;
+  background: rgba(34, 34, 34, 0.5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 24px;
+  width: 80%;
+  max-width: 700px;
+  max-height: 500px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.219);
   color: #f0f0f0;
   transform: scale(0.95);
   opacity: 0;
@@ -31,64 +33,60 @@
 
 .modal h2 {
   text-align: center;
-  color: #ffffff;
-  margin-bottom: 25px;
+  color: #cccccc;
+  margin-bottom: 44px;
   font-family: var(--font-raleway), sans-serif;
-  font-weight: 600;
-  font-size: 1.8rem;
+  font-weight: 800;
+  font-size: 32px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 24px;
 }
 
 .inputField,
-.textAreaField { /* Объединяем общие стили */
+.textAreaField {
   padding: 16px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.219);
+  border-radius: 16px;
   font-family: var(--font-raleway), sans-serif;
   font-weight: 400;
-  font-size: 1rem;
-  color: #e0e0e0;
-  background-color: rgb(31, 31, 31);
+  font-size: 16px;
+  color: #cccccc;
+  background-color: rgba(31, 31, 31, 0.7);
   outline: none;
   transition: all 0.3s ease-in-out;
-  font-variant-numeric: lining-nums; /* Современный способ */
-  -moz-font-feature-settings: "lnum"; /* Для Firefox */
-  -webkit-font-feature-settings: "lnum"; /* Для Webkit */
+  font-variant-numeric: lining-nums;
+  -moz-font-feature-settings: "lnum";
+  -webkit-font-feature-settings: "lnum";
   font-feature-settings: "lnum";
 }
 
-/* Убрал 'resize: vertical;' чтобы textarea не растягивалась */
 .textAreaField {
-  resize: none; /* ВОТ ОНО! Отключаем изменение размера */
-  min-height: 120px; /* Минимальная высота, чтобы было удобно */
-  /* max-height и overflow-y не нужны, если resize: none */
+  resize: none;
+  min-height: 160px;
 }
 
-/* Стилизация скроллбара для .textAreaField */
 .textAreaField::-webkit-scrollbar {
-  width: 8px; /* Чуть тоньше, чем глобальный */
+  width: 8px;
 }
 
 .textAreaField::-webkit-scrollbar-track {
-  background: #1f1f1f; /* Темный фон для трека, чуть темнее общего фона поля */
+  background: #1f1f1f;
   border-radius: 10px;
 }
 
 .textAreaField::-webkit-scrollbar-thumb {
-  background-color: #6f00ff; /* Фиолетовый цвет ползунка */
+  background-color: #6f00ff;
   border-radius: 10px;
-  border: 2px solid #1f1f1f; /* Обводка под цвет трека */
+  border: 2px solid #1f1f1f;
 }
 
 .textAreaField::-webkit-scrollbar-thumb:hover {
-  background-color: #8c2bff; /* Чуть светлее фиолетовый при наведении */
+  background-color: #8c2bff;
 }
-
 
 .inputField::placeholder,
 .textAreaField::placeholder {
@@ -97,61 +95,73 @@
 
 .inputField:focus,
 .textAreaField:focus {
-  background-color: rgb(14, 14, 14);
+  background-color: rgba(0, 0, 0, 0.55);
   border-color: #6f00ff;
-  box-shadow: 0 0 8px rgba(111, 0, 255, 0.6);
+  box-shadow: 0 0 20px rgba(111, 0, 255, 0.4);
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 16px;
+  margin-top: 0px;
 }
 
-.button {
+.modal .button {
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.7);
+  color: #cccccc;
   padding: 12px 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.219);
   border-radius: 8px;
   cursor: pointer;
   font-family: var(--font-raleway), sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  
-  position: relative; 
-  overflow: hidden; 
-  z-index: 1; 
-  
-  transition: 
-    background-color 0.4s ease-out,
-    color 0.4s ease-out,
-    border-color 0.4s ease-out,
-    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.4s ease-out; 
-  
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition:
+    background-color 0.3s ease-out,
+    color 0.3s ease-out,
+    border-color 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.3s ease-out;
   box-shadow: none;
 }
 
-.button:hover {
+.modal .button[type="submit"]:hover {
+  background-color: #007904;
+  color: white;
+  border-color: #00ff0800;
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.7), 0 0 30px rgba(76, 175, 80, 0.5), 0 5px 15px rgba(0, 0, 0, 0.5);
+  animation: save-button-pulse-glow 1.8s infinite alternate;
+}
+
+.modal .button[type="submit"]:active {
+  background-color: #388E3C;
+  transform: translateY(-1px);
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5), 0 0 10px rgba(76, 175, 80, 0.3), 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-out;
+  animation: none;
+}
+
+.modal .button:not([type="submit"]):hover {
   background-color: #6f00ff;
   color: white;
   border-color: #6f00ff;
-  transform: translateY(-3px);
-  
-  box-shadow: 
-    0 0 15px rgba(111, 0, 255, 0.7), 
+  transform: scale(1.03);
+  box-shadow:
+    0 0 15px rgba(111, 0, 255, 0.7),
     0 0 30px rgba(111, 0, 255, 0.5),
     0 5px 15px rgba(0, 0, 0, 0.5);
-  
   animation: button-pulse-glow 1.8s infinite alternate;
 }
 
-.button:active {
+.modal .button:not([type="submit"]):active {
   background-color: #8c2bff;
   transform: translateY(-1px);
-  box-shadow: 
+  box-shadow:
     0 0 5px rgba(111, 0, 255, 0.5),
     0 0 10px rgba(111, 0, 255, 0.3),
     0 2px 5px rgba(0, 0, 0, 0.3);
@@ -159,26 +169,26 @@
   animation: none;
 }
 
-.button.delete {
+.modal .button.delete {
   background-color: transparent;
   color: rgba(255, 100, 100, 0.7);
   border-color: rgba(255, 100, 100, 0.3);
 }
 
-.button.delete:hover {
-  background-color: #ff3333;
+.modal .button.delete:hover {
+  background-color: #9c0000;
   color: white;
-  border-color: #ff3333;
-  box-shadow: 
-    0 0 15px rgba(255, 50, 50, 0.7), 
+  border-color: #ff333300;
+  box-shadow:
+    0 0 15px rgba(255, 50, 50, 0.7),
     0 0 30px rgba(255, 50, 50, 0.5),
     0 5px 15px rgba(0, 0, 0, 0.5);
   animation: delete-button-pulse-glow 1.8s infinite alternate;
 }
 
-.button.delete:active {
+.modal .button.delete:active {
   background-color: #ff6666;
-  box-shadow: 
+  box-shadow:
     0 0 5px rgba(255, 50, 50, 0.5),
     0 0 10px rgba(255, 50, 50, 0.3),
     0 2px 5px rgba(0, 0, 0, 0.3);
@@ -197,41 +207,62 @@
 
 @keyframes button-pulse-glow {
   0% {
-    box-shadow: 
-      0 0 15px rgba(111, 0, 255, 0.7), 
+    box-shadow:
+      0 0 15px rgba(111, 0, 255, 0.7),
       0 0 30px rgba(111, 0, 255, 0.5),
       0 5px 15px rgba(0, 0, 0, 0.5);
   }
   50% {
-    box-shadow: 
-      0 0 25px rgba(111, 0, 255, 0.9), 
-      0 0 45px rgba(111, 0, 255, 0.7), 
-      0 8px 20px rgba(0, 0, 0, 0.7); 
+    box-shadow:
+      0 0 25px rgba(111, 0, 255, 0.9),
+      0 0 45px rgba(111, 0, 255, 0.7),
+      0 8px 20px rgba(0, 0, 0, 0.7);
   }
   100% {
-    box-shadow: 
-      0 0 15px rgba(111, 0, 255, 0.7), 
+    box-shadow:
+      0 0 15px rgba(111, 0, 255, 0.7),
       0 0 30px rgba(111, 0, 255, 0.5),
+      0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes save-button-pulse-glow {
+  0% {
+    box-shadow:
+      0 0 15px rgba(76, 175, 80, 0.7),
+      0 0 30px rgba(76, 175, 80, 0.5),
+      0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(76, 175, 80, 0.9),
+      0 0 45px rgba(76, 175, 80, 0.7),
+      0 8px 20px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    box-shadow:
+      0 0 15px rgba(76, 175, 80, 0.7),
+      0 0 30px rgba(76, 175, 80, 0.5),
       0 5px 15px rgba(0, 0, 0, 0.5);
   }
 }
 
 @keyframes delete-button-pulse-glow {
   0% {
-    box-shadow: 
-      0 0 15px rgba(255, 50, 50, 0.7), 
+    box-shadow:
+      0 0 15px rgba(255, 50, 50, 0.7),
       0 0 30px rgba(255, 50, 50, 0.5),
       0 5px 15px rgba(0, 0, 0, 0.5);
   }
   50% {
-    box-shadow: 
-      0 0 25px rgba(255, 50, 50, 0.9), 
-      0 0 45px rgba(255, 50, 50, 0.7), 
-      0 8px 20px rgba(0, 0, 0, 0.7); 
+    box-shadow:
+      0 0 25px rgba(255, 50, 50, 0.9),
+      0 0 45px rgba(255, 50, 50, 0.7),
+      0 8px 20px rgba(0, 0, 0, 0.7);
   }
   100% {
-    box-shadow: 
-      0 0 15px rgba(255, 50, 50, 0.7), 
+    box-shadow:
+      0 0 15px rgba(255, 50, 50, 0.7),
       0 0 30px rgba(255, 50, 50, 0.5),
       0 5px 15px rgba(0, 0, 0, 0.5);
   }
